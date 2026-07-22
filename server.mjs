@@ -19,13 +19,14 @@ const proxy = createProxyMiddleware({
   ws: true,              // forwards WebSocket upgrades too (needed if the
                           // admin dashboard or anything else uses a live
                           // socket connection through the browser)
-  logLevel: "warn",
-  onError: (err, req, res) => {
-    console.error("[proxy error]", err.message);
-    if (res.writeHead) {
-      res.writeHead(502, { "Content-Type": "text/plain" });
-      res.end("Bad gateway — the origin server (BotHosting.net) did not respond. It may be restarting or offline.");
-    }
+  on: {
+    error: (err, req, res) => {
+      console.error("[proxy error]", err.message);
+      if (res && "writeHead" in res) {
+        res.writeHead(502, { "Content-Type": "text/plain" });
+        res.end("Bad gateway — the origin server (BotHosting.net) did not respond. It may be restarting or offline.");
+      }
+    },
   },
 });
 
