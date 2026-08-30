@@ -24,7 +24,7 @@ import { createProxyMiddleware } from "http-proxy-middleware";
 // connection — if the panel gave you a different port there, update the
 // number below to match it exactly, and update start.sh's PORT to the
 // same number.
-const TARGET = "http://nodej.eaglegnick.tech:4042";
+const TARGET = "http://nodej.eaglegnick.tech:3032";
 // ─────────────────────────────────────────────────────────────────────────
 
 const app = express();
@@ -49,7 +49,7 @@ const proxy = createProxyMiddleware({
       console.error("[proxy error]", err.message);
       if (res && "writeHead" in res) {
         res.writeHead(502, { "Content-Type": "text/plain" });
-        res.end("Bad gateway — the origin server (BotHosting.net) did not respond. It may be restarting or offline.");
+        res.end("Requiem Order is down alert mods or try again later. Also try refreshing your page.");
       }
     },
   },
