@@ -24,7 +24,7 @@ import { createProxyMiddleware } from "http-proxy-middleware";
 // connection — if the panel gave you a different port there, update the
 // number below to match it exactly, and update start.sh's PORT to the
 // same number.
-const TARGET = "http://nodej.eaglegnick.tech:3031";
+const TARGET = "http://pnel.zone.id:3030";
 // ─────────────────────────────────────────────────────────────────────────
 
 const app = express();
